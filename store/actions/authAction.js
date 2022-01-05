@@ -1,7 +1,6 @@
 import {GoogleSignin, statusCodes} from "@react-native-google-signin/google-signin";
 import auth from '@react-native-firebase/auth';
-import {LOGIN_USER} from "../../constants/redux-constants";
-import AsyncStorage from "@react-native-community/async-storage";
+import {LOGIN_USER, LOGOUT_USER} from "../../constants/redux-constants";
 
 GoogleSignin.configure({
     webClientId: '458546632909-ovek975bk83mu7ej1094balukn2inphe.apps.googleusercontent.com'
@@ -12,16 +11,10 @@ export const Login = () => {
             if (await GoogleSignin.hasPlayServices()) {
                 const {idToken} = await GoogleSignin.signIn();
                 const googleCredential = await auth.GoogleAuthProvider.credential(idToken);
-                const user = await auth().signInWithCredential(googleCredential);
-                AsyncStorage.setItem('user', JSON.stringify({
-                    email: user.email,
-                    username: user.displayName,
-                    photo: user.photURL
-                }))
-
+                const {user} = await auth().signInWithCredential(googleCredential);
                 dispatch({
                     type: LOGIN_USER,
-                    user: user.user
+                    user: user
                 })
             }
         } catch (e) {
@@ -47,8 +40,7 @@ export const Logout = () => {
             await GoogleSignin.signOut();
             await auth().signOut();
             dispatch({
-                type: LOGIN_USER,
-                user: null
+                type: LOGOUT_USER,
             })
         } catch (e) {
             console.log(e);
