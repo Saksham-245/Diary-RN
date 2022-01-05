@@ -3,18 +3,20 @@ import {Text, View} from "react-native";
 import tailwind from "twrnc";
 import {Button, TextInput} from "react-native-paper";
 import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import * as diariesAction from '../store/actions/diariesAction';
 
 const NewDiary = ({navigation}) => {
     const [text, setText] = React.useState('');
     const [error,setError] = React.useState(false);
     const user = useSelector(state => state.auth.user);
-
-    console.log(user);
+    const dispatch = useDispatch();
 
     const saveDiary = ()=>{
         if(text.length === 0) {
             setError(true);
         }else{
+            dispatch(diariesAction.saveDiary(user.uid,text));
             navigation.goBack();
         }
     }

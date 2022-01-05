@@ -1,5 +1,6 @@
 import database from '@react-native-firebase/database';
 
+
 export const saveDiary = (id,diary)=>{
     return async dispatch=>{
         try {
