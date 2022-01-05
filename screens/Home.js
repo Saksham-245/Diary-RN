@@ -5,8 +5,6 @@ import * as AuthActions from '../store/actions/authAction';
 
 const Home = () => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.auth.user);
-
 
     return (
         <View>
