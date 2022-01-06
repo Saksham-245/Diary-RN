@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, Paragraph} from 'react-native-paper';
 import tailwind from 'twrnc';
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 const TextCard = ({diary}) => {
   return (
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     marginLeft: Dimensions.get('window').width * 0.06,
     marginRight: Dimensions.get('window').width * 0.02,
     marginBottom: Dimensions.get('window').height * 0.02,
+    borderRadius: 20,
   },
 });
 

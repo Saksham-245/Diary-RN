@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useLayoutEffect, useState} from 'react';
 import {
-  Button,
   Dimensions,
   FlatList,
   Image,
@@ -14,7 +13,6 @@ import {PRIMARY_COLOR} from '../constants/Colors';
 import tailwind from 'twrnc';
 import * as DiaryAction from '../store/actions/diariesAction';
 import {ActivityIndicator} from 'react-native-paper';
-import Card from '../components/TextCard';
 import TextCard from '../components/TextCard';
 
 const Home = ({navigation}) => {
@@ -58,7 +56,7 @@ const Home = ({navigation}) => {
     loadDiaries().then(() => {
       setIsLoading(false);
     });
-  }, [dispatch, loadDiaries]);
+  }, [loadDiaries]);
 
   const renderUI = () => {
     if (diaries.length === 0 && !isLoading) {
@@ -78,8 +76,7 @@ const Home = ({navigation}) => {
           data={diaries}
           numColumns={2}
           contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: Dimensions.get('window').height * 0.1,
+            paddingBottom: Dimensions.get('window').height * 0.2 - 50,
           }}
           renderItem={({item}) => {
             return <TextCard diary={item.diary} />;
@@ -96,7 +93,7 @@ const Home = ({navigation}) => {
         size={50}
         color={PRIMARY_COLOR}
         icon="plus-circle"
-        style={styles.addButton}
+        style={tailwind`flex items-center`}
         onPress={() => {
           navigation.navigate('NewDiary');
         }}
@@ -113,12 +110,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: Dimensions.get('window').height / 2 - 100,
-  },
-  addbutton: {
-    position: 'absolute',
-    bottom: 20,
-    right: 20,
-    left: 20,
   },
   noText: {
     fontSize: 20,
