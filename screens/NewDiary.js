@@ -24,7 +24,7 @@ const NewDiary = ({navigation}) => {
   return (
     <View>
       <TextInput
-        label={'Type your diary here'}
+        label="Type your diary here"
         value={text}
         multiline={true}
         numberOfLines={(Dimensions.get('screen').height * 0.6) / 15}

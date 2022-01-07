@@ -1,9 +1,9 @@
 import thunk from 'redux-thunk';
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {persistReducer, persistStore} from "redux-persist";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import authReducer from "./reducers/authReducer";
 import {diariesReducer} from "./reducers/diaryReducer";
+import AsyncStorage from "@react-native-community/async-storage";
 
 const persistConfig = {
     key: 'root',

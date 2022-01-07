@@ -93,7 +93,7 @@ const Home = ({navigation}) => {
         size={50}
         color={PRIMARY_COLOR}
         icon="plus-circle"
-        style={tailwind`flex items-center`}
+        style={[tailwind`inset-y-0 right-0`,styles.button ]}
         onPress={() => {
           navigation.navigate('NewDiary');
         }}
@@ -110,6 +110,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: Dimensions.get('window').height / 2 - 100,
+  },
+  button:{
+    left: Dimensions.get('window').width - 90,
   },
   noText: {
     fontSize: 20,
