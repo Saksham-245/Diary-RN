@@ -1,3 +1,4 @@
+
 import thunk from 'redux-thunk';
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {persistReducer, persistStore} from "redux-persist";

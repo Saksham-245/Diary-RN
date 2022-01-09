@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {Dimensions, KeyboardAvoidingView, Platform, StyleSheet, View} from 'react-native';
 import {Button, TextInput} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
@@ -23,6 +23,7 @@ const NewDiary = ({navigation}) => {
 
   return (
     <View>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "height": 'padding'}>
       <TextInput
         label="Type your diary here"
         value={text}
@@ -38,6 +39,7 @@ const NewDiary = ({navigation}) => {
         onPress={saveDiary}>
         Save
       </Button>
+      </KeyboardAvoidingView>
     </View>
   );
 };
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
   saveButton: {
     width: Dimensions.get('window').width * 0.8,
     borderRadius: 10,
-    marginTop: Dimensions.get('window').height * 0.02,
+    marginTop: Dimensions.get('window').height * 0.01,
     marginBottom: Dimensions.get('window').height * 0.02,
     marginLeft: Dimensions.get('window').width * 0.1,
   },
