@@ -1,8 +1,13 @@
 import React from 'react';
-import {Dimensions, KeyboardAvoidingView, Platform, StyleSheet, View} from 'react-native';
+import {
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {Button, TextInput} from 'react-native-paper';
-import {useSelector} from 'react-redux';
-import {useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import * as diariesAction from '../store/actions/diariesAction';
 import {PRIMARY_COLOR} from '../constants/Colors';
 
@@ -23,22 +28,23 @@ const NewDiary = ({navigation}) => {
 
   return (
     <View>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "height": 'padding'}>
-      <TextInput
-        label="Type your diary here"
-        value={text}
-        multiline={true}
-        numberOfLines={(Dimensions.get('screen').height * 0.6) / 15}
-        onChangeText={text => setText(text)}
-        error={error}
-      />
-      <Button
-        mode={'contained'}
-        color={PRIMARY_COLOR}
-        style={styles.saveButton}
-        onPress={saveDiary}>
-        Save
-      </Button>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'height' : 'padding'}>
+        <TextInput
+          label="Type your diary here"
+          value={text}
+          multiline={true}
+          numberOfLines={(Dimensions.get('screen').height * 0.6) / 15.2}
+          onChangeText={t => setText(t)}
+          error={error}
+        />
+        <Button
+          mode={'contained'}
+          color={PRIMARY_COLOR}
+          style={styles.saveButton}
+          onPress={saveDiary}>
+          Save
+        </Button>
       </KeyboardAvoidingView>
     </View>
   );
